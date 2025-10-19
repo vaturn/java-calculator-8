@@ -7,21 +7,42 @@ import java.util.Set;
 
 public class Parser {
     public static List<Integer> parse(String inputs){
-        return parseBasicToken(inputs);
+
+        int index = -1;
+        if(inputs.length() > 4 && inputs.charAt(0) == '/' && inputs.charAt(1) == '/'){
+            // 문자열에 \n 이 없으면 -1 반환
+            index = inputs.indexOf("\\n");
+        }
+
+        Set<Character> delimiters = new HashSet<>();
+        delimiters.add(':');
+        delimiters.add(',');
+
+        if(index != -1)
+            delimiters.addAll(getDelimiter(inputs.substring(2, index)));
+
+        return parseByToken(inputs.substring(index + 1), delimiters);
     }
 
-    public static List<Integer> parseBasicToken(String inputs){
-        Set<Character> delimiter = new HashSet<>();
+    // 선택 구분자를 파싱하는 함수
+    private static Set<Character> getDelimiter(String inputs){
+        Set<Character> customDelimiters = new HashSet<>();
 
-        // 기본 구분자
-        delimiter.add(',');
-        delimiter.add(':');
+        for(char ch: inputs.toCharArray()){
+            customDelimiters.add(ch);
+        }
+
+        return customDelimiters;
+    }
+
+    // 구분자를 매개변수로 넘겨줌
+    private static List<Integer> parseByToken(String inputs, Set<Character> delimiters){
 
         int curNumber = 0;
         List<Integer> results = new ArrayList<>();
 
         for(char ch : inputs.toCharArray()){
-            if(delimiter.contains(ch)){
+            if(delimiters.contains(ch)){
                 results.add(curNumber);
                 curNumber = 0;
             }
