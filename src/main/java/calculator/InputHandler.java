@@ -8,7 +8,6 @@ import java.util.Scanner;
 public class InputHandler {
     public static String input(){
         Scanner scanner = new Scanner(System.in);
-        scanner.close();
 
         return scanner.nextLine();
     }
