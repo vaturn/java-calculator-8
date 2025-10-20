@@ -12,6 +12,9 @@ public class Parser {
         if(inputs.length() > 4 && inputs.charAt(0) == '/' && inputs.charAt(1) == '/'){
             // 문자열에 \n 이 없으면 -1 반환
             index = inputs.indexOf("\\n");
+
+            // \n은 문자가 2칸이므로
+            index += 1;
         }
 
         Set<Character> delimiters = new HashSet<>();
