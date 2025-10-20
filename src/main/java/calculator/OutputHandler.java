@@ -7,7 +7,7 @@ public class OutputHandler {
             return;
         }
 
-        System.out.println(data);
+        System.out.println("결과 : " + data);
     }
 
     public static void errput(Object data){

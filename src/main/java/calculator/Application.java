@@ -20,8 +20,10 @@ public class Application {
         } catch (IllegalArgumentException e) {
             OutputHandler.errput(e.getMessage());
             OutputHandler.errput("Invalid Token is " + e.getWrongPosition());
+            throw e;
         } catch (Exception e) {
             OutputHandler.errput(e.getMessage());
+            throw e;
         }
     }
 }
