@@ -18,10 +18,10 @@ public class Application {
             // 출력
             OutputHandler.output(results);
         } catch (IllegalArgumentException e) {
-            System.err.println(e.getMessage());
-            System.err.println("Invalid Token is " + e.getWrongPosition());
+            OutputHandler.errput(e.getMessage());
+            OutputHandler.errput("Invalid Token is " + e.getWrongPosition());
         } catch (Exception e) {
-            System.err.println(e.getMessage());
+            OutputHandler.errput(e.getMessage());
         }
     }
 }

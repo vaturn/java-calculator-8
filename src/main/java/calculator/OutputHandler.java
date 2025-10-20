@@ -9,4 +9,12 @@ public class OutputHandler {
 
         System.out.println(data);
     }
+
+    public static void errput(Object data){
+        if(data == null){
+            return;
+        }
+
+        System.err.println(data);
+    }
 }
