@@ -41,6 +41,7 @@ public class Parser {
         int curNumber = 0;
         List<Integer> results = new ArrayList<>();
 
+
         for(char ch : inputs.toCharArray()){
             if(delimiters.contains(ch)){
                 results.add(curNumber);
@@ -48,6 +49,9 @@ public class Parser {
             }
             else if(Character.isDigit(ch)) {
                 curNumber = curNumber * 10 + Character.getNumericValue(ch);
+            }
+            else {
+                throw new IllegalArgumentException(ch);
             }
         }
         results.add(curNumber);

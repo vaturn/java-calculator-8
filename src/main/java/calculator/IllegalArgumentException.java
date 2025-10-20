@@ -1,7 +1,16 @@
 package calculator;
 
+import java.util.Arrays;
+
 public class IllegalArgumentException extends RuntimeException{
-    public IllegalArgumentException(int index){
-        super("잘못된 문자열 입력");
+    private final char wrongToken;
+    public IllegalArgumentException(char wrongToken){
+        super("Invalid string input");
+        this.wrongToken = wrongToken;
+    }
+
+    // 오류가 발생한 토큰 반환
+    public char getWrongPosition() {
+        return wrongToken;
     }
 }
