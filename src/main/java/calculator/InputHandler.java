@@ -9,6 +9,10 @@ public class InputHandler {
     public static String input(){
         Scanner scanner = new Scanner(System.in);
 
-        return scanner.nextLine();
+        if (scanner.hasNextLine()) {
+            return scanner.nextLine();
+        } else {
+            return "";
+        }
     }
 }
